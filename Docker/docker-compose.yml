@@ -1,0 +1,17 @@
+## docker build -t django-crud-devops .
+## docker run -p 80:80 django-crud-devops
+services:
+  django-crud:
+    build: .
+    image: django-crud-devops
+    ports: 
+      - 80:80
+    container_name: django-crud
+  ## docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=password postgres 
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+    container_name: postgres
