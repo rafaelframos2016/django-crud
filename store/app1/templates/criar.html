@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" autocomplete="off">
+{% csrf_token %}
+
+{% for field in form %}
+<div>
+    <label for="">{{field.label}}</label>
+    <div>{{field}}</div>
+</div>
+{% if field.errors %}
+{% for erro in field.errors %}
+<div>
+    <span>{{erro}}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endfor %}
+<div>
+    <button type="submit">Salvar</button>
+</div>
+</form>
+{% endblock %}
